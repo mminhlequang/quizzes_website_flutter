@@ -185,6 +185,37 @@ class _QuizsScreenState extends State<QuizsScreen> {
                           ),
                         ),
                         kSpacingWidth24,
+                        InkWell(
+                          onTap: () {
+                            _bloc.add(ChangeFilterQuizsEvent(
+                                isForKid: !state.isForKid));
+                          },
+                          child: Row(
+                            children: [
+                              Text('is subject ForKid:',
+                                  style: w300TextStyle(
+                                      fontSize: 14,
+                                      color: hexColor('#68686A'))),
+                              kSpacingWidth4,
+                              CircleAvatar(
+                                backgroundColor: state.isForKid
+                                    ? appColorPrimary
+                                    : appColorElement,
+                                radius: 6,
+                                child: !state.isForKid
+                                    ? const SizedBox()
+                                    : const Center(
+                                        child: Icon(
+                                          CupertinoIcons.check_mark,
+                                          size: 8,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        kSpacingWidth24,
                         WidgetOverlayActions(
                           gestureType: state.itemsSubjects != null
                               ? GestureType.onTap
@@ -264,37 +295,6 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                   style: w500TextStyle(),
                                 ),
                               ]
-                            ],
-                          ),
-                        ),
-                        kSpacingWidth24,
-                        InkWell(
-                          onTap: () {
-                            _bloc.add(ChangeFilterQuizsEvent(
-                                isForKid: !state.isForKid));
-                          },
-                          child: Row(
-                            children: [
-                              Text('isForKid:',
-                                  style: w300TextStyle(
-                                      fontSize: 14,
-                                      color: hexColor('#68686A'))),
-                              kSpacingWidth4,
-                              CircleAvatar(
-                                backgroundColor: state.isForKid
-                                    ? appColorPrimary
-                                    : appColorElement,
-                                radius: 6,
-                                child: !state.isForKid
-                                    ? const SizedBox()
-                                    : const Center(
-                                        child: Icon(
-                                          CupertinoIcons.check_mark,
-                                          size: 8,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                              ),
                             ],
                           ),
                         ),
@@ -441,7 +441,6 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             WidgetRowValue.label(flex: 4, value: kdb_hint),
                             WidgetRowValue.label(flex: 2, value: kdb_answers),
                             WidgetRowValue.label(flex: 8, value: kdb_explain),
-                            WidgetRowValue.label(value: kdb_isForKid),
                             WidgetRowValue.label(value: kdb_isPublic),
                             WidgetRowValue.label(flex: 1, value: ''),
                           ],
@@ -562,19 +561,6 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                           flex: 8,
                                           value: e.data()[kdb_explain],
                                           maxLines: 99,
-                                        ),
-                                        WidgetRowValue(
-                                          flex: 1,
-                                          maxLines: 99,
-                                          cellDataType: CellDataType.bol,
-                                          value: e.data()[kdb_isForKid],
-                                          label: 'Set to isForKid',
-                                          callback: (value) async {
-                                            await colQuizs
-                                                .doc('${e.data()[kdb_id]}')
-                                                .update({kdb_isForKid: value});
-                                            _bloc.add(const FetchQuizsEvent());
-                                          },
                                         ),
                                         WidgetRowValue(
                                           flex: 1,

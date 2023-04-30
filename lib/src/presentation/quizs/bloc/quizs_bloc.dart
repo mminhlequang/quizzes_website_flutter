@@ -29,7 +29,6 @@ class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
     if (state.items == null || state.items!.isEmpty || state.page == 1) {
       var query = await colQuizs
           .limit(state.limit)
-          .where(kdb_isForKid, isEqualTo: state.isForKid)
           .where(kdb_isPublic, isEqualTo: state.isPublic)
           .where(kdb_subjectId, isEqualTo: state.subject![kdb_id])
           .get();
@@ -37,8 +36,7 @@ class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
     } else {
       var last = state.items!.last;
       emit(state.update(items: []));
-      var query = await colQuizs
-          .where(kdb_isForKid, isEqualTo: state.isForKid)
+      var query = await colQuizs 
           .where(kdb_isPublic, isEqualTo: state.isPublic)
           .where(kdb_subjectId, isEqualTo: state.subject![kdb_id])
           .startAfterDocument(last)
@@ -50,8 +48,7 @@ class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
 
     AggregateQuerySnapshot querycount = await colQuizs.count().get();
     var count = querycount.count;
-    AggregateQuerySnapshot querycountWithFilter = await colQuizs
-        .where(kdb_isForKid, isEqualTo: state.isForKid)
+    AggregateQuerySnapshot querycountWithFilter = await colQuizs 
         .where(kdb_isPublic, isEqualTo: state.isPublic)
         .where(kdb_subjectId, isEqualTo: state.subject![kdb_id])
         .count()
@@ -77,6 +74,7 @@ class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
     emit(state.update(language: event.language));
     var query = await colSubjects
         .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+        .where(kdb_isForKid, isEqualTo: state.isForKid)
         .get();
     emit(state.update(
         itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
@@ -92,6 +90,17 @@ class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
 
   _changeFilter(ChangeFilterQuizsEvent event, emit) async {
     emit(state.update(isForKid: event.isForKid, isPublic: event.isPublic));
-    add(const FetchQuizsEvent(page: 1));
+    if(event.isForKid != null){
+      var query = await colSubjects
+          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+          .where(kdb_isForKid, isEqualTo: state.isForKid)
+          .get();
+      emit(state.update(
+          itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
+      if (query.docs.isNotEmpty) {
+        add(ChangeSubjectQuizsEvent(state.itemsSubjects!.first.data()));
+      }
+    }else {
+    add(const FetchQuizsEvent(page: 1));}
   }
 }
