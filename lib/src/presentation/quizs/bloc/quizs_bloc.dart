@@ -8,8 +8,8 @@ part 'quizs_state.dart';
 
 class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
   bool _needRefresh = true;
-  
-  void needRefresh(){
+
+  void needRefresh() {
     _needRefresh = false;
   }
 
@@ -36,7 +36,7 @@ class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
     } else {
       var last = state.items!.last;
       emit(state.update(items: []));
-      var query = await colQuizs 
+      var query = await colQuizs
           .where(kdb_isPublic, isEqualTo: state.isPublic)
           .where(kdb_subjectId, isEqualTo: state.subject![kdb_id])
           .startAfterDocument(last)
@@ -48,7 +48,7 @@ class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
 
     AggregateQuerySnapshot querycount = await colQuizs.count().get();
     var count = querycount.count;
-    AggregateQuerySnapshot querycountWithFilter = await colQuizs 
+    AggregateQuerySnapshot querycountWithFilter = await colQuizs
         .where(kdb_isPublic, isEqualTo: state.isPublic)
         .where(kdb_subjectId, isEqualTo: state.subject![kdb_id])
         .count()
@@ -72,14 +72,25 @@ class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
 
   _changeLang(ChangeLangQuizsEvent event, emit) async {
     emit(state.update(language: event.language));
-    var query = await colSubjects
-        .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
-        .where(kdb_isForKid, isEqualTo: state.isForKid)
-        .get();
-    emit(state.update(
-        itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
-    if (query.docs.isNotEmpty) {
-      add(ChangeSubjectQuizsEvent(state.itemsSubjects!.first.data()));
+    if (state.isForKid) {
+      var query = await colSubjects
+          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+          .where(kdb_isForKid, isEqualTo: state.isForKid)
+          .get();
+      emit(state.update(
+          itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
+      if (query.docs.isNotEmpty) {
+        add(ChangeSubjectQuizsEvent(state.itemsSubjects!.first.data()));
+      }
+    } else {
+      var query = await colSubjects
+          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+          .get();
+      emit(state.update(
+          itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
+      if (query.docs.isNotEmpty) {
+        add(ChangeSubjectQuizsEvent(state.itemsSubjects!.first.data()));
+      }
     }
   }
 
@@ -90,17 +101,31 @@ class QuizsBloc extends Bloc<QuizsEvent, QuizsState> {
 
   _changeFilter(ChangeFilterQuizsEvent event, emit) async {
     emit(state.update(isForKid: event.isForKid, isPublic: event.isPublic));
-    if(event.isForKid != null){
-      var query = await colSubjects
-          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
-          .where(kdb_isForKid, isEqualTo: state.isForKid)
-          .get();
-      emit(state.update(
-          itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
-      if (query.docs.isNotEmpty) {
-        add(ChangeSubjectQuizsEvent(state.itemsSubjects!.first.data()));
+    if (event.isForKid != null) {
+      if (state.isForKid) {
+        var query = await colSubjects
+            .where(kdb_languageCode,
+                isEqualTo: state.language![kdb_languageCode])
+            .where(kdb_isForKid, isEqualTo: state.isForKid)
+            .get();
+        emit(state.update(
+            itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
+        if (query.docs.isNotEmpty) {
+          add(ChangeSubjectQuizsEvent(state.itemsSubjects!.first.data()));
+        }
+      } else {
+        var query = await colSubjects
+            .where(kdb_languageCode,
+                isEqualTo: state.language![kdb_languageCode])
+            .get();
+        emit(state.update(
+            itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
+        if (query.docs.isNotEmpty) {
+          add(ChangeSubjectQuizsEvent(state.itemsSubjects!.first.data()));
+        }
       }
-    }else {
-    add(const FetchQuizsEvent(page: 1));}
+    } else {
+      add(const FetchQuizsEvent(page: 1));
+    }
   }
 }

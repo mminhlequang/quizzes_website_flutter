@@ -27,27 +27,49 @@ class QuizFormBloc extends Bloc<QuizFormEvent, QuizFormState> {
 
   _changeLang(ChangeLangQuizFormEvent event, emit) async {
     emit(state.update(language: event.language));
-    var query = await colSubjects
-        .where(kdb_isForKid, isEqualTo: state.isForKid)
-        .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
-        .get();
-    emit(state.update(
-        itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
-    if (query.docs.isNotEmpty) {
-      add(ChangeSubjectQuizFormEvent(state.itemsSubjects!.first.data()));
+    if (state.isForKid) {
+      var query = await colSubjects
+          .where(kdb_isForKid, isEqualTo: state.isForKid)
+          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+          .get();
+      emit(state.update(
+          itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
+      if (query.docs.isNotEmpty) {
+        add(ChangeSubjectQuizFormEvent(state.itemsSubjects!.first.data()));
+      }
+    } else {
+      var query = await colSubjects
+          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+          .get();
+      emit(state.update(
+          itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
+      if (query.docs.isNotEmpty) {
+        add(ChangeSubjectQuizFormEvent(state.itemsSubjects!.first.data()));
+      }
     }
   }
 
   _changeFilter(ChangeFilterQuizFormEvent event, emit) async {
     emit(state.update(isForKid: event.isForKid));
-    var query = await colSubjects
-        .where(kdb_isForKid, isEqualTo: state.isForKid)
-        .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
-        .get();
-    emit(state.update(
-        itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
-    if (query.docs.isNotEmpty) {
-      add(ChangeSubjectQuizFormEvent(state.itemsSubjects!.first.data()));
+    if (state.isForKid) {
+      var query = await colSubjects
+          .where(kdb_isForKid, isEqualTo: state.isForKid)
+          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+          .get();
+      emit(state.update(
+          itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
+      if (query.docs.isNotEmpty) {
+        add(ChangeSubjectQuizFormEvent(state.itemsSubjects!.first.data()));
+      }
+    } else {
+      var query = await colSubjects
+          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+          .get();
+      emit(state.update(
+          itemsSubjects: query.docs as List<QueryDocumentSnapshot<Map>>));
+      if (query.docs.isNotEmpty) {
+        add(ChangeSubjectQuizFormEvent(state.itemsSubjects!.first.data()));
+      }
     }
   }
 

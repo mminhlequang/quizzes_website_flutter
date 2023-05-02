@@ -212,7 +212,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                       },
                                       child: Row(
                                         children: [
-                                          Text('isForKid:',
+                                          Text('is subject ForKid:',
                                               style: w300TextStyle(
                                                   fontSize: 14,
                                                   color: hexColor('#68686A'))),

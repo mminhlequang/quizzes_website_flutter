@@ -462,7 +462,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                                       flex: 1,
                                       maxLines: 99,
                                       cellDataType: CellDataType.bol,
-                                      value: e.data()[kdb_isForKid],
+                                      value: e.data()[kdb_isForKid] ?? false,
                                       label: 'Set to isForKid',
                                       callback: (value) async {
                                         await colSubjects
@@ -474,7 +474,8 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                                     WidgetRowValue(
                                       flex: 1,
                                       cellDataType: CellDataType.bol,
-                                      value: e.data()[kdb_isProVersion],
+                                      value:
+                                          e.data()[kdb_isProVersion] ?? false,
                                       label: 'Set to isProVersion',
                                       callback: (value) async {
                                         await colSubjects
@@ -492,7 +493,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                                       callback: (value) async {
                                         await colSubjects
                                             .doc('${e.data()[kdb_id]}')
-                                            .update({kdb_isPublic: value});
+                       .update({kdb_isPublic: value});
                                         _bloc.add(const FetchSubjectsEvent());
                                       },
                                     ),
@@ -505,6 +506,13 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                                               .delete();
                                           _bloc.add(const FetchSubjectsEvent());
                                           Get.find<QuizsBloc>().needRefresh();
+                                          var queries = await colQuizs
+                                              .where(kdb_subjectId,
+                                                  isEqualTo: e.data()[kdb_id])
+                                              .get();
+                                          for (var doc in queries.docs) {
+                                            colQuizs.doc(doc.id).delete();
+                                          }
                                         },
                                       ),
                                     ),

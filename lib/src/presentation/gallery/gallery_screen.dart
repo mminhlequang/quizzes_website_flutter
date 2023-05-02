@@ -1,4 +1,4 @@
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart'; 
+import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -217,6 +217,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                             WidgetRowValue.label(flex: 3, value: kdb_fileName),
                             WidgetRowValue.label(flex: 4, value: kdb_url),
                             WidgetRowValue.label(flex: 1, value: ''),
+                            WidgetRowValue.label(flex: 1, value: ''),
                           ],
                         ),
                       ),
@@ -269,6 +270,16 @@ class _GalleryScreenState extends State<GalleryScreen> {
                                         WidgetRowValue(
                                           flex: 4,
                                           value: e.data()[kdb_url],
+                                        ),
+                                        WidgetRowValue(
+                                          flex: 1,
+                                          valueEdit: e.data()[kdb_url],
+                                          value: AspectRatio(
+                                            aspectRatio: 1,
+                                            child: WidgetAppImage(
+                                                imageUrl: e.data()[kdb_url]),
+                                          ),
+                                          maxLines: 99,
                                         ),
                                         WidgetRowValue(
                                           flex: 1,

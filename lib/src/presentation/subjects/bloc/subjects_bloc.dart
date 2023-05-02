@@ -20,37 +20,73 @@ class SubjectsBloc extends Bloc<SubjectsEvent, SubjectsState> {
     emit(state.update());
 
     if (state.items == null || state.items!.isEmpty || state.page == 1) {
-      var query = await colSubjects
-          .where(kdb_isForKid, isEqualTo: state.isForKid)
-          .where(kdb_isPublic, isEqualTo: state.isPublic)
-          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
-          .limit(state.limit)
-          .get();
-      emit(state.update(items: query.docs as List<QueryDocumentSnapshot<Map>>));
+      if (state.isForKid) {
+        var query = await colSubjects
+            .where(kdb_isForKid, isEqualTo: state.isForKid)
+            .where(kdb_isPublic, isEqualTo: state.isPublic)
+            .where(kdb_languageCode,
+                isEqualTo: state.language![kdb_languageCode])
+            .limit(state.limit)
+            .get();
+        emit(state.update(
+            items: query.docs as List<QueryDocumentSnapshot<Map>>));
+      } else {
+        var query = await colSubjects
+            .where(kdb_isPublic, isEqualTo: state.isPublic)
+            .where(kdb_languageCode,
+                isEqualTo: state.language![kdb_languageCode])
+            .limit(state.limit)
+            .get();
+        emit(state.update(
+            items: query.docs as List<QueryDocumentSnapshot<Map>>));
+      }
     } else {
       var last = state.items!.last;
       emit(state.update(items: []));
-      var query = await colSubjects
-          .where(kdb_isForKid, isEqualTo: state.isForKid)
-          .where(kdb_isPublic, isEqualTo: state.isPublic)
-          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
-          .startAfterDocument(last)
-          .limit(state.limit)
-          .get();
-      query.docs;
-      emit(state.update(items: query.docs as List<QueryDocumentSnapshot<Map>>));
+      if (state.isForKid) {
+        var query = await colSubjects
+            .where(kdb_isForKid, isEqualTo: state.isForKid)
+            .where(kdb_isPublic, isEqualTo: state.isPublic)
+            .where(kdb_languageCode,
+                isEqualTo: state.language![kdb_languageCode])
+            .startAfterDocument(last)
+            .limit(state.limit)
+            .get();
+        emit(state.update(
+            items: query.docs as List<QueryDocumentSnapshot<Map>>));
+      } else {
+        var query = await colSubjects
+            .where(kdb_isPublic, isEqualTo: state.isPublic)
+            .where(kdb_languageCode,
+                isEqualTo: state.language![kdb_languageCode])
+            .startAfterDocument(last)
+            .limit(state.limit)
+            .get();
+        emit(state.update(
+            items: query.docs as List<QueryDocumentSnapshot<Map>>));
+      }
     }
 
     AggregateQuerySnapshot querycount = await colSubjects.count().get();
     var count = querycount.count;
-    AggregateQuerySnapshot querycountWithFilter = await colSubjects
-        .where(kdb_isForKid, isEqualTo: state.isForKid)
-        .where(kdb_isPublic, isEqualTo: state.isPublic)
-        .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
-        .count()
-        .get();
-    var countWithFilter = querycountWithFilter.count;
-    emit(state.update(count: count, countWithFilter: countWithFilter));
+    if (state.isForKid) {
+      AggregateQuerySnapshot querycountWithFilter = await colSubjects
+          .where(kdb_isForKid, isEqualTo: state.isForKid)
+          .where(kdb_isPublic, isEqualTo: state.isPublic)
+          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+          .count()
+          .get();
+      var countWithFilter = querycountWithFilter.count;
+      emit(state.update(count: count, countWithFilter: countWithFilter));
+    } else {
+      AggregateQuerySnapshot querycountWithFilter = await colSubjects
+          .where(kdb_isPublic, isEqualTo: state.isPublic)
+          .where(kdb_languageCode, isEqualTo: state.language![kdb_languageCode])
+          .count()
+          .get();
+      var countWithFilter = querycountWithFilter.count;
+      emit(state.update(count: count, countWithFilter: countWithFilter));
+    }
   }
 
   _init(event, emit) async {
