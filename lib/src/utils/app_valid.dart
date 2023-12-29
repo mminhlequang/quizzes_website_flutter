@@ -17,11 +17,12 @@ class AppValid {
       if (value == null || value.length < 6) {
         return 'valid_password'.tr;
       } else {
-        RegExp regex = new RegExp(r'^[0-9a-zA-Z!@#\$&*~]{6,}$');
-        if (!regex.hasMatch(value))
+        RegExp regex = RegExp(r'^[0-9a-zA-Z!@#\$&*~]{6,}$');
+        if (!regex.hasMatch(value)) {
           return 'valid_password'.tr;
-        else
+        } else {
           return null;
+        }
       }
     };
   }

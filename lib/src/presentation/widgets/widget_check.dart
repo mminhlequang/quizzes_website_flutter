@@ -1,5 +1,4 @@
 import 'package:_iwu_pack/_iwu_pack.dart';
-import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -33,7 +32,7 @@ class WidgetCheck extends StatelessWidget {
                   )
                 : const SizedBox(),
           ),
-          Gap(8),
+          const Gap(8),
           Text(
             label,
             style: w400TextStyle(),

@@ -83,7 +83,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                     const Spacer(),
                   ],
                 ),
-                Gap(32),
+                const Gap(32),
                 Row(
                   children: [
                     SizedBox(
@@ -176,7 +176,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                     style: w300TextStyle(
                                         fontSize: 14,
                                         color: hexColor('#68686A'))),
-                                Gap(4),
+                                const Gap(4),
                                 Text(
                                   '${state.language![kdb_languageName]}',
                                   style: w500TextStyle(),
@@ -185,7 +185,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             ],
                           ),
                         ),
-                        Gap(24),
+                        const Gap(24),
                         InkWell(
                           onTap: () {
                             _bloc.add(ChangeFilterQuizsEvent(
@@ -197,7 +197,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                   style: w300TextStyle(
                                       fontSize: 14,
                                       color: hexColor('#68686A'))),
-                              Gap(4),
+                              const Gap(4),
                               CircleAvatar(
                                 backgroundColor: state.isForKid
                                     ? appColorPrimary
@@ -216,7 +216,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             ],
                           ),
                         ),
-                        Gap(24),
+                        const Gap(24),
                         WidgetOverlayActions(
                           gestureType: state.itemsSubjects != null
                               ? GestureType.onTap
@@ -289,7 +289,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                     style: w300TextStyle(
                                         fontSize: 14,
                                         color: hexColor('#68686A'))),
-                                Gap(4),
+                                const Gap(4),
                                 Text(
                                   '${state.subject![kdb_label]} '
                                   "(${state.countWithFilter})",
@@ -299,7 +299,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             ],
                           ),
                         ),
-                        Gap(24),
+                        const Gap(24),
                         InkWell(
                           onTap: () {
                             _bloc.add(ChangeFilterQuizsEvent(
@@ -311,7 +311,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                   style: w300TextStyle(
                                       fontSize: 14,
                                       color: hexColor('#68686A'))),
-                              Gap(4),
+                              const Gap(4),
                               CircleAvatar(
                                 backgroundColor: state.isPublic
                                     ? appColorPrimary
@@ -332,12 +332,12 @@ class _QuizsScreenState extends State<QuizsScreen> {
                         ),
                       ],
                     ),
-                    Gap(32),
+                    const Gap(32),
                     Text(
                       'Page:',
                       style: w400TextStyle(),
                     ),
-                    Gap(4),
+                    const Gap(4),
                     IconButton(
                       onPressed: state.page == 1
                           ? null
@@ -366,7 +366,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             : appColorText,
                       ),
                     ),
-                    Gap(12),
+                    const Gap(12),
                     WidgetOverlayActions(
                       builder: (Widget child,
                           Size size,
@@ -421,7 +421,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             'Limit:',
                             style: w400TextStyle(),
                           ),
-                          Gap(4),
+                          const Gap(4),
                           Text(
                             '${state.limit} items',
                             style: w500TextStyle(),
@@ -431,13 +431,13 @@ class _QuizsScreenState extends State<QuizsScreen> {
                     ),
                   ],
                 ),
-                Gap(32),
+                const Gap(32),
                 Expanded(
                   child: Column(
                     children: [
-                      WidgetRowHeader(
+                      const WidgetRowHeader(
                         child: Row(
-                          children: const [
+                          children: [
                             WidgetRowValue.label(flex: 4, value: kdb_question),
                             WidgetRowValue.label(flex: 4, value: kdb_hint),
                             WidgetRowValue.label(flex: 2, value: kdb_answers),
@@ -447,7 +447,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                           ],
                         ),
                       ),
-                      Gap(20),
+                      const Gap(20),
                       Expanded(
                         child: ValueListenableBuilder(
                             valueListenable: searchController,
@@ -524,7 +524,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                                               style:
                                                                   w300TextStyle(),
                                                             ),
-                                                            Gap(4),
+                                                            const Gap(4),
                                                             if (e[kdb_isCorrect] ==
                                                                     true ||
                                                                 e[kdb_isCorrect] ==

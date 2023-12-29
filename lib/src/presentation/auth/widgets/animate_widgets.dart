@@ -16,14 +16,14 @@ class WidgetInputPhone extends StatefulWidget {
   final dynamic onFieldSubmitted;
   final dynamic isValidated;
   const WidgetInputPhone({
-    Key? key,
+    super.key,
     this.focusNode,
     this.controller,
     this.onFieldSubmitted,
     this.onInputValidated,
     this.isValidated,
     this.onInputChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<WidgetInputPhone> createState() => _WidgetInputPhoneState();
@@ -131,7 +131,7 @@ class WidgetInputLogin extends StatefulWidget {
   final String? errorMessage;
 
   const WidgetInputLogin({
-    Key? key,
+    super.key,
     this.errorMessage,
     this.fillColor,
     this.textColor,
@@ -151,7 +151,7 @@ class WidgetInputLogin extends StatefulWidget {
     this.isVerified = false,
     this.isPassword = false,
     this.isEmail = false,
-  }) : super(key: key);
+  });
 
   @override
   _WidgetInputLoginState createState() => _WidgetInputLoginState();

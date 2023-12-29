@@ -14,9 +14,9 @@ class CountrySearchListWidget extends StatefulWidget {
   final bool? showFlags;
   final bool? useEmoji;
 
-  CountrySearchListWidget(
+  const CountrySearchListWidget(
     this.countries,
-    this.locale, {
+    this.locale, {super.key, 
     this.searchBoxDecoration,
     this.scrollController,
     this.showFlags,
@@ -30,7 +30,7 @@ class CountrySearchListWidget extends StatefulWidget {
 }
 
 class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
-  late TextEditingController _searchController = TextEditingController();
+  late final TextEditingController _searchController = TextEditingController();
   late List<Country> filteredCountries;
 
   @override
@@ -139,12 +139,12 @@ class DirectionalCountryListTile extends StatelessWidget {
   final bool useEmoji;
 
   const DirectionalCountryListTile({
-    Key? key,
+    super.key,
     required this.country,
     required this.locale,
     required this.showFlags,
     required this.useEmoji,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +176,7 @@ class _Flag extends StatelessWidget {
   final Country? country;
   final bool? useEmoji;
 
-  const _Flag({Key? key, this.country, this.useEmoji}) : super(key: key);
+  const _Flag({this.country, this.useEmoji});
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +184,7 @@ class _Flag extends StatelessWidget {
         ? Container(
           child:Text(
                     Utils.generateFlagEmojiUnicode(country?.alpha2Code ?? ''),
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
             // child: useEmoji!
             //     ? Text(

@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:browser_image_compression/browser_image_compression.dart';
@@ -14,7 +13,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:quizzes/src/firestore_resources/firestore_resources.dart';
 import 'package:quizzes/src/presentation/widgets/widget_button.dart';
 import 'package:mime/mime.dart';
-import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:quizzes/src/utils/utils.dart';
 
@@ -146,7 +144,7 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
                             "Gallery",
                             style: w600TextStyle(fontSize: 28),
                           ),
-                          Gap(8),
+                          const Gap(8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -166,7 +164,7 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
                               ),
                             ],
                           ),
-                          Gap(24),
+                          const Gap(24),
                           DropTarget(
                             onDragDone: (detail) {
                               if (detail.files
@@ -194,7 +192,7 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
                                 borderType: BorderType.RRect,
                                 radius: const Radius.circular(26),
                                 padding: const EdgeInsets.all(5),
-                                dashPattern: [8, 8],
+                                dashPattern: const [8, 8],
                                 color: hexColor('#B8B8B8'),
                                 strokeWidth: 2,
                                 child: SizedBox(
@@ -216,7 +214,7 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
                               ),
                             ),
                           ),
-                          Gap(20),
+                          const Gap(20),
                           ...xfiles
                               .mapIndexed((e, i) => Padding(
                                     padding:
@@ -231,8 +229,8 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
                                       ],
                                     ),
                                   ))
-                              .toList(),
-                          Gap(24),
+                              ,
+                          const Gap(24),
                           WidgetButton(
                             loading: loading,
                             enable: xfiles.isNotEmpty,

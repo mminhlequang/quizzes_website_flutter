@@ -78,7 +78,7 @@ class _ComingSoonScreenState extends State<ComingSoonScreen> {
                               ),
                             ),
                           ),
-                          Gap(16),
+                          const Gap(16),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -87,7 +87,7 @@ class _ComingSoonScreenState extends State<ComingSoonScreen> {
                                 style: w700TextStyle(
                                     color: Colors.white, fontSize: 24),
                               ),
-                              Gap(4),
+                              const Gap(4),
                               Text(
                                 'Engineering Your Ideas to Life ',
                                 style: w400TextStyle(

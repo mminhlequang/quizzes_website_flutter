@@ -6,5 +6,5 @@ class AppAssets {
   static String svg(asset) => 'assets/images/svg/$asset.png';
   static String lottie(asset) => 'assets/lotties/$asset.png';
 
-  static final String icReport = 'assets/images/ic_report.png';
+  static const String icReport = 'assets/images/ic_report.png';
 }

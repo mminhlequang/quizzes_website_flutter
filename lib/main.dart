@@ -45,7 +45,7 @@ void _initialBlocs() {
 }
 
 class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   static void setLocale(BuildContext context, Locale newLocale) {
     _AppState state = context.findAncestorStateOfType<_AppState>()!;

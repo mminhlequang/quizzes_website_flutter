@@ -6,10 +6,10 @@ class WidgetCopyable extends StatelessWidget {
   final Widget child;
 
   const WidgetCopyable({
-    Key? key,
+    super.key,
     required this.text,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +38,13 @@ class WidgetTextCopyable extends StatelessWidget {
 
   const WidgetTextCopyable(
     this.text, {
-    Key? key,
+    super.key,
     this.style,
     this.textAlign,
     this.softWrap,
     this.overflow,
     this.maxLines,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

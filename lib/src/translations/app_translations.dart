@@ -53,8 +53,7 @@ void setLocale(languageCode) {
 }
 
 Locale getLocale() {
-  if (AppPrefs.instance.languageCode != null)
-    return _locale(AppPrefs.instance.languageCode!);
+  return _locale(AppPrefs.instance.languageCode);
   final Locale systemLocales = window.locale;
   return _locale(systemLocales.languageCode);
 }

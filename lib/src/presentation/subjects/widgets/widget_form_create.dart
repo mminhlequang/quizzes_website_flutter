@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:_iwu_pack/_iwu_pack.dart';
-import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -68,7 +67,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                       borderRadius: BorderRadius.circular(26)),
                   child: SingleChildScrollView(
                     child: AnimatedSize(
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
@@ -77,7 +76,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                             "Subjects",
                             style: w600TextStyle(fontSize: 28),
                           ),
-                          Gap(8),
+                          const Gap(8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -100,7 +99,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                                   )),
                             ],
                           ),
-                          Gap(24),
+                          const Gap(24),
                           if (isEnableJson) ...[
                             WidgetTextField(
                               controller: json,
@@ -122,7 +121,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                                         setState(() {});
                                       },
                                     )),
-                                Gap(16),
+                                const Gap(16),
                                 Expanded(
                                   flex: 1,
                                   child: WidgetTextField(
@@ -135,7 +134,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                                 ),
                               ],
                             ),
-                            Gap(16),
+                            const Gap(16),
                             WidgetCheck(
                               status: isSetPublic,
                               label: 'Set to public',
@@ -146,7 +145,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                               },
                             )
                           ],
-                          Gap(24),
+                          const Gap(24),
                           WidgetButton(
                             enable: isEnableJson
                                 ? isJson

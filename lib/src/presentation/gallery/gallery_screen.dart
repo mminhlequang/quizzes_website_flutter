@@ -6,10 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:quizzes/src/firestore_resources/constants.dart';
 import 'package:quizzes/src/firestore_resources/instances.dart';
-import 'package:quizzes/src/presentation/widgets/widget_fab_ani.dart';
 
-import '../widgets/widget_popup_container.dart';
-import '../widgets/widget_row_value.dart';
 import '../widgets/widgets.dart';
 import 'bloc/gallery_bloc.dart';
 import 'widgets/widget_form_create.dart';
@@ -81,7 +78,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                     const Spacer(),
                   ],
                 ),
-                Gap(32),
+                const Gap(32),
                 Row(
                   children: [
                     SizedBox(
@@ -109,7 +106,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                       'Page:',
                       style: w400TextStyle(),
                     ),
-                    Gap(4),
+                    const Gap(4),
                     IconButton(
                       onPressed: state.page == 1
                           ? null
@@ -140,7 +137,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                             : appColorText,
                       ),
                     ),
-                    Gap(12),
+                    const Gap(12),
                     WidgetOverlayActions(
                       builder: (Widget child,
                           Size size,
@@ -195,7 +192,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                             'Limit:',
                             style: w400TextStyle(),
                           ),
-                          Gap(4),
+                          const Gap(4),
                           Text(
                             '${state.limit} items',
                             style: w500TextStyle(),
@@ -205,13 +202,13 @@ class _GalleryScreenState extends State<GalleryScreen> {
                     ),
                   ],
                 ),
-                Gap(32),
+                const Gap(32),
                 Expanded(
                   child: Column(
                     children: [
-                      WidgetRowHeader(
+                      const WidgetRowHeader(
                         child: Row(
-                          children: const [
+                          children: [
                             WidgetRowValue.label(flex: 1, value: kdb_mime),
                             WidgetRowValue.label(flex: 1, value: kdb_size),
                             WidgetRowValue.label(flex: 2, value: kdb_path),
@@ -222,7 +219,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                           ],
                         ),
                       ),
-                      Gap(20),
+                      const Gap(20),
                       Expanded(
                         child: ValueListenableBuilder(
                             valueListenable: searchController,

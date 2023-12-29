@@ -11,8 +11,8 @@ SignInBloc get _bloc => Get.find<SignInBloc>();
 
 class AuthenticateScreen extends StatefulWidget {
   const AuthenticateScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<AuthenticateScreen> createState() => _AuthenticateScreenState();

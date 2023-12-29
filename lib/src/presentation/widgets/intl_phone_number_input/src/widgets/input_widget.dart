@@ -88,8 +88,8 @@ class InternationalPhoneNumberInput extends StatefulWidget {
   final Widget Function(Widget child)? builderButtonSelector;
   final Widget Function(Widget child)? builderTextField;
 
-  InternationalPhoneNumberInput({
-    Key? key,
+  const InternationalPhoneNumberInput({
+    super.key,
     this.builderTextField,
     this.builderButtonSelector,
     this.selectorConfig = const SelectorConfig(),
@@ -128,7 +128,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
     this.cursorColor,
     this.autofillHints,
     this.countries,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() => _InputWidgetState();
@@ -299,7 +299,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
 
   Widget get textFieldInput => Center(
         child: TextFormField(
-          key: widget.fieldKey ?? Key(TestHelper.TextInputKeyValue),
+          key: widget.fieldKey ?? const Key(TestHelper.TextInputKeyValue),
           textDirection: TextDirection.ltr,
           controller: controller,
           cursorColor: widget.cursorColor,
@@ -339,7 +339,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
   InputDecoration getInputDecoration(InputDecoration? decoration) {
     InputDecoration value = decoration ??
         InputDecoration(
-          border: widget.inputBorder ?? UnderlineInputBorder(),
+          border: widget.inputBorder ?? const UnderlineInputBorder(),
           hintText: widget.hintText,
         );
 
@@ -391,7 +391,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
           controller!.text.replaceAll(RegExp(r'[^\d+]'), '');
 
       String phoneNumber =
-          '${country?.dialCode ?? ''}' + parsedPhoneNumberString;
+          '${country?.dialCode ?? ''}$parsedPhoneNumberString';
 
       widget.onSaved?.call(
         PhoneNumber(
@@ -421,10 +421,11 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
 
 class _InputWidgetView
     extends WidgetView<InternationalPhoneNumberInput, _InputWidgetState> {
+  @override
   final _InputWidgetState state;
 
-  _InputWidgetView({Key? key, required this.state})
-      : super(key: key, state: state);
+  const _InputWidgetView({required this.state})
+      : super(state: state);
 
   @override
   Widget build(BuildContext context) {

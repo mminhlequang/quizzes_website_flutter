@@ -11,7 +11,7 @@ import 'widget_textfield.dart';
 
 class WidgetRowHeader extends StatelessWidget {
   final Widget child;
-  const WidgetRowHeader({Key? key, required this.child}) : super(key: key);
+  const WidgetRowHeader({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +26,7 @@ class WidgetRowHeader extends StatelessWidget {
 class WidgetRowItem extends StatelessWidget {
   final Widget child;
   final Function()? onTap;
-  const WidgetRowItem({Key? key, required this.child, this.onTap})
-      : super(key: key);
+  const WidgetRowItem({super.key, required this.child, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +66,7 @@ class WidgetRowValue extends StatefulWidget {
   final CellDataType cellDataType;
   final String? label;
   const WidgetRowValue({
-    Key? key,
+    super.key,
     required this.value,
     this.valueEdit,
     this.alignment = Alignment.centerLeft,
@@ -79,11 +78,10 @@ class WidgetRowValue extends StatefulWidget {
     this.cellDataType = CellDataType.string,
     this.label,
     this.valueHover,
-  })  : isLabel = false,
-        super(key: key);
+  })  : isLabel = false;
 
   const WidgetRowValue.label({
-    Key? key,
+    super.key,
     required this.value,
     this.alignment = Alignment.centerLeft,
     this.flex = 1,
@@ -95,8 +93,7 @@ class WidgetRowValue extends StatefulWidget {
         inputWidth = 400,
         callback = null,
         label = null,
-        cellDataType = CellDataType.string,
-        super(key: key);
+        cellDataType = CellDataType.string;
 
   @override
   State<WidgetRowValue> createState() => _WidgetRowValueState();

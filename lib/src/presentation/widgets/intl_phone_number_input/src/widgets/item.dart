@@ -12,13 +12,13 @@ class Item extends StatelessWidget {
   final bool trailingSpace;
 
   const Item({
-    Key? key,
+    super.key,
     this.builder,
     this.country,
     this.textStyle,
     this.leadingPadding = 12,
     this.trailingSpace = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class _Flag extends StatelessWidget {
   final Widget Function(String)? builder;
   final Country? country;
 
-  const _Flag({Key? key, this.builder, this.country}) : super(key: key);
+  const _Flag({this.builder, this.country});
 
   @override
   Widget build(BuildContext context) {

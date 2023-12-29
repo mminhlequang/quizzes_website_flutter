@@ -6,7 +6,6 @@ import 'package:quizzes/src/base/bloc.dart';
 import 'package:quizzes/src/presentation/languages/languages_screen.dart';
 import 'package:quizzes/src/presentation/quizs/quizs_screen.dart';
 
-import '../auth/authenticate_screen.dart';
 import '../gallery/gallery_screen.dart';
 import '../subjects/subjects_screen.dart';
 import 'bloc/dashboard_bloc.dart';
@@ -15,7 +14,7 @@ import 'widgets/widget_drawer.dart';
 DashboardBloc get _bloc => Get.find<DashboardBloc>();
 
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
+  const DashboardScreen({super.key});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();

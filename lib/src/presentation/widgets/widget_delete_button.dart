@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:_iwu_pack/_iwu_pack.dart';
-import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
@@ -56,7 +55,7 @@ class _WidgetDeleteButtonState extends State<WidgetDeleteButton> {
                       style: w400TextStyle(fontSize: 16),
                     ),
                   ),
-                  Gap(12),
+                  const Gap(12),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -78,7 +77,7 @@ class _WidgetDeleteButtonState extends State<WidgetDeleteButton> {
                           ),
                         ),
                       ),
-                      Gap(12),
+                      const Gap(12),
                       WidgetRippleButton(
                         onTap: widget.callback,
                         color: appColorText,

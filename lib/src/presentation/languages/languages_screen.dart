@@ -80,7 +80,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                     const Spacer(),
                   ],
                 ),
-                Gap(32),
+                const Gap(32),
                 Row(
                   children: [
                     SizedBox(
@@ -108,7 +108,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                       'Page:',
                       style: w400TextStyle(),
                     ),
-                    Gap(4),
+                    const Gap(4),
                     IconButton(
                       onPressed: state.page == 1
                           ? null
@@ -139,7 +139,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                             : appColorText,
                       ),
                     ),
-                    Gap(12),
+                    const Gap(12),
                     WidgetOverlayActions(
                       builder: (Widget child,
                           Size size,
@@ -194,7 +194,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                             'Limit:',
                             style: w400TextStyle(),
                           ),
-                          Gap(4),
+                          const Gap(4),
                           Text(
                             '${state.limit} items',
                             style: w500TextStyle(),
@@ -204,13 +204,13 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                     ),
                   ],
                 ),
-                Gap(32),
+                const Gap(32),
                 Expanded(
                   child: Column(
                     children: [
-                      WidgetRowHeader(
+                      const WidgetRowHeader(
                         child: Row(
-                          children: const [
+                          children: [
                             WidgetRowValue.label(
                                 flex: 4, value: kdb_languageName),
                             WidgetRowValue.label(
@@ -219,7 +219,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                           ],
                         ),
                       ),
-                      Gap(20),
+                      const Gap(20),
                       Expanded(
                         child: ValueListenableBuilder(
                             valueListenable: searchController,

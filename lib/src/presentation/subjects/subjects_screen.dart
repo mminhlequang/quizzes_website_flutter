@@ -1,8 +1,6 @@
-import 'dart:math';
 
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -86,7 +84,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                   const Spacer(),
                 ],
               ),
-              Gap(32),
+              const Gap(32),
               Row(
                 children: [
                   SizedBox(
@@ -178,7 +176,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                                   style: w300TextStyle(
                                       fontSize: 14,
                                       color: hexColor('#68686A'))),
-                              Gap(4),
+                              const Gap(4),
                               Text(
                                 '${state.language![kdb_languageName]} '
                                 "(${state.countWithFilter})",
@@ -188,7 +186,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                           ],
                         ),
                       ),
-                      Gap(24),
+                      const Gap(24),
                       InkWell(
                         onTap: () {
                           _bloc.add(ChangeFilterSubjectsEvent(
@@ -199,7 +197,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                             Text('isForKid:',
                                 style: w300TextStyle(
                                     fontSize: 14, color: hexColor('#68686A'))),
-                            Gap(4),
+                            const Gap(4),
                             CircleAvatar(
                               backgroundColor: state.isForKid
                                   ? appColorPrimary
@@ -218,7 +216,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                           ],
                         ),
                       ),
-                      Gap(24),
+                      const Gap(24),
                       InkWell(
                         onTap: () {
                           _bloc.add(ChangeFilterSubjectsEvent(
@@ -229,7 +227,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                             Text('isPublic:',
                                 style: w300TextStyle(
                                     fontSize: 14, color: hexColor('#68686A'))),
-                            Gap(4),
+                            const Gap(4),
                             CircleAvatar(
                               backgroundColor: state.isPublic
                                   ? appColorPrimary
@@ -250,12 +248,12 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                       ),
                     ],
                   ),
-                  Gap(32),
+                  const Gap(32),
                   Text(
                     'Page:',
                     style: w400TextStyle(),
                   ),
-                  Gap(4),
+                  const Gap(4),
                   IconButton(
                     onPressed: state.page == 1
                         ? null
@@ -284,7 +282,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                           : appColorText,
                     ),
                   ),
-                  Gap(12),
+                  const Gap(12),
                   WidgetOverlayActions(
                     builder: (Widget child,
                         Size size,
@@ -339,7 +337,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                           'Limit:',
                           style: w400TextStyle(),
                         ),
-                        Gap(4),
+                        const Gap(4),
                         Text(
                           '${state.limit} items',
                           style: w500TextStyle(),
@@ -349,13 +347,13 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                   ),
                 ],
               ),
-              Gap(32),
+              const Gap(32),
               Expanded(
                 child: Column(
                   children: [
-                    WidgetRowHeader(
+                    const WidgetRowHeader(
                       child: Row(
-                        children: const [
+                        children: [
                           WidgetRowValue.label(flex: 2, value: kdb_id),
                           WidgetRowValue.label(flex: 1, value: kdb_order),
                           WidgetRowValue.label(flex: 2, value: kdb_imageUrl),
@@ -369,7 +367,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                         ],
                       ),
                     ),
-                    Gap(20),
+                    const Gap(20),
                     Expanded(
                       child: ValueListenableBuilder(
                         valueListenable: searchController,
@@ -538,7 +536,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
 
 class _NumberOfSubjects extends StatefulWidget {
   final int id;
-  const _NumberOfSubjects({super.key, required this.id});
+  const _NumberOfSubjects({required this.id});
 
   @override
   State<_NumberOfSubjects> createState() => __NumberOfSubjectsState();

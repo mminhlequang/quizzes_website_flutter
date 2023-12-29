@@ -22,13 +22,13 @@ class WidgetFABAni extends StatelessWidget {
   /// [fab] parameter must not be null.
   /// [shouldShow] parameter toggles the [fab] (true/false => show/hide).
   const WidgetFABAni({
-    Key? key,
+    super.key,
     required this.fab,
     this.animationDuration = kThemeAnimationDuration,
     this.showCurve = Curves.linear,
     this.hideCurve = Curves.linear,
     this.shouldShow = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

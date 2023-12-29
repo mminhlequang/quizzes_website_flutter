@@ -87,7 +87,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                   "Quizs",
                                   style: w600TextStyle(fontSize: 28),
                                 ),
-                                Gap(8),
+                                const Gap(8),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -115,7 +115,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                     ),
                                   ],
                                 ),
-                                Gap(24),
+                                const Gap(24),
                                 Row(
                                   children: [
                                     WidgetOverlayActions(
@@ -196,7 +196,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                                     fontSize: 14,
                                                     color:
                                                         hexColor('#68686A'))),
-                                            Gap(4),
+                                            const Gap(4),
                                             Text(
                                               '${state.language![kdb_languageName]}',
                                               style: w500TextStyle(),
@@ -205,7 +205,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                         ],
                                       ),
                                     ),
-                                    Gap(24),
+                                    const Gap(24),
                                     InkWell(
                                       onTap: () {
                                         _bloc.add(ChangeFilterQuizFormEvent(
@@ -217,7 +217,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                               style: w300TextStyle(
                                                   fontSize: 14,
                                                   color: hexColor('#68686A'))),
-                                          Gap(4),
+                                          const Gap(4),
                                           CircleAvatar(
                                             backgroundColor: state.isForKid
                                                 ? appColorPrimary
@@ -236,7 +236,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                         ],
                                       ),
                                     ),
-                                    Gap(24),
+                                    const Gap(24),
                                     WidgetOverlayActions(
                                       gestureType: state.itemsSubjects != null
                                           ? GestureType.onTap
@@ -323,7 +323,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                                     fontSize: 14,
                                                     color:
                                                         hexColor('#68686A'))),
-                                            Gap(4),
+                                            const Gap(4),
                                             Text(
                                               '${state.subject![kdb_label]}',
                                               style: w500TextStyle(),
@@ -334,7 +334,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                     ),
                                   ],
                                 ),
-                                Gap(16),
+                                const Gap(16),
                                 if (isEnableJson) ...[
                                   WidgetTextField(
                                     controller: json,
@@ -356,7 +356,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                               setState(() {});
                                             },
                                           )),
-                                      Gap(16),
+                                      const Gap(16),
                                       Expanded(
                                         flex: 1,
                                         child: WidgetTextField(
@@ -369,7 +369,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                       ),
                                     ],
                                   ),
-                                  Gap(16),
+                                  const Gap(16),
                                   WidgetCheck(
                                     status: isSetPublic,
                                     label: 'Set to public',
@@ -380,7 +380,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                     },
                                   )
                                 ],
-                                Gap(24),
+                                const Gap(24),
                                 WidgetButton(
                                   enable: state.subject != null &&
                                       (isEnableJson

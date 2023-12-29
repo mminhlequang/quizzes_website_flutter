@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../intl_phone_number_input.dart';
 import '../models/country_model.dart';
-import '../utils/selector_config.dart';
 import '../utils/test/test_helper.dart';
 import 'countries_search_list_widget.dart';
 import 'item.dart';
@@ -21,7 +20,7 @@ class SelectorButton extends StatelessWidget {
   final ValueChanged<Country?> onCountryChanged;
 
   const SelectorButton({
-    Key? key,
+    super.key,
     required this.countries,
     required this.country,
     required this.selectorConfig,
@@ -31,7 +30,7 @@ class SelectorButton extends StatelessWidget {
     required this.onCountryChanged,
     required this.isEnabled,
     required this.isScrollControlled,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,7 @@ class SelectorButton extends StatelessWidget {
                   elevation: 4,
                   key: const Key(TestHelper.DropdownButtonKeyValue),
                   icon: Container(
-                    margin: EdgeInsets.only(right: 6),
+                    margin: const EdgeInsets.only(right: 6),
                     child: Icon(
                       Icons.arrow_drop_down,
                       color: selectorConfig.selectorTextStyle!.color ??
@@ -69,7 +68,7 @@ class SelectorButton extends StatelessWidget {
                 textStyle: selectorConfig.selectorTextStyle,
               )
         : MaterialButton(
-            key: Key(TestHelper.DropdownButtonKeyValue),
+            key: const Key(TestHelper.DropdownButtonKeyValue),
             padding: EdgeInsets.zero,
             minWidth: 0,
             onPressed: countries.isNotEmpty && countries.length > 1 && isEnabled
@@ -128,7 +127,7 @@ class SelectorButton extends StatelessWidget {
       builder: (BuildContext context) => AlertDialog(
         content: Directionality(
           textDirection: Directionality.of(inheritedContext),
-          child: Container(
+          child: SizedBox(
             width: double.maxFinite,
             child: CountrySearchListWidget(
               countries,
@@ -150,7 +149,7 @@ class SelectorButton extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       isScrollControlled: isScrollControlled,
       backgroundColor: Colors.transparent,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(12), topRight: Radius.circular(12))),
       builder: (BuildContext context) {
@@ -168,7 +167,7 @@ class SelectorButton extends StatelessWidget {
                   child: Container(
                     decoration: ShapeDecoration(
                       color: Theme.of(context).canvasColor,
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(12),
                           topRight: Radius.circular(12),

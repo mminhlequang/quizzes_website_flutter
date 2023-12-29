@@ -2,7 +2,6 @@
 //
 //
 // DB
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 const String kdb_quizs = 'quizs';
 const String kdb_subjects = 'subjects';
