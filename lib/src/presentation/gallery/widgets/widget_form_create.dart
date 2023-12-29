@@ -1,24 +1,24 @@
-
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:browser_image_compression/browser_image_compression.dart';
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:quizzes/src/firestore_resources/firestore_resources.dart';
 import 'package:quizzes/src/presentation/widgets/widget_button.dart';
 import 'package:mime/mime.dart';
 import 'package:path/path.dart';
-import 'package:quizzes/src/utils/utils.dart';
 
 import '../bloc/gallery_bloc.dart';
 
-GalleryBloc get _bloc => Get.find<GalleryBloc>();
+GalleryBloc get _bloc => findInstance<GalleryBloc>();
 
 class WidgetFormCreateLangs extends StatefulWidget {
   const WidgetFormCreateLangs({super.key});
@@ -108,14 +108,14 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
 
     await Future.delayed(const Duration(seconds: 1));
     _bloc.add(const FetchGalleryEvent(page: 1));
-    Get.back();
+    appContext.pop();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.back();
+        context.pop();
       },
       child: Material(
         color: Colors.black26,
@@ -200,7 +200,7 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
                                   child: Center(
                                       child: isDraging
                                           ? Text(
-                                              'drophere!'.tr,
+                                              'drophere!'.tr(),
                                               style: w400TextStyle(
                                                   fontSize: 20,
                                                   color: appColorPrimary),
@@ -215,21 +215,19 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
                             ),
                           ),
                           const Gap(20),
-                          ...xfiles
-                              .mapIndexed((e, i) => Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 4),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                            child: Text(
-                                          '$i. ${e.name} (${e.mimeType})',
-                                          style: w300TextStyle(),
-                                        ))
-                                      ],
-                                    ),
-                                  ))
-                              ,
+                          ...xfiles.mapIndexed((e, i) => Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 4),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                        child: Text(
+                                      '$i. ${e.name} (${e.mimeType})',
+                                      style: w300TextStyle(),
+                                    ))
+                                  ],
+                                ),
+                              )),
                           const Gap(24),
                           WidgetButton(
                             loading: loading,

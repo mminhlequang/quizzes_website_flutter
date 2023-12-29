@@ -1,6 +1,7 @@
 import 'package:_iwu_pack/_iwu_pack.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/constants/constants.dart';
 import 'package:quizzes/src/presentation/widgets/intl_phone_number_input/src/utils/phone_number.dart';
 import 'package:quizzes/src/presentation/widgets/intl_phone_number_input/src/utils/selector_config.dart';
@@ -69,7 +70,7 @@ class _WidgetInputPhoneState extends State<WidgetInputPhone> {
             inputDecoration: InputDecoration(
                 contentPadding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
                 border: InputBorder.none,
-                hintText: 'Phone number'.tr,
+                hintText: 'Phone number'.tr(),
                 hintStyle: w400TextStyle()),
             formatInput: true,
             spaceBetweenSelectorAndTextField: 0.0,
@@ -180,7 +181,7 @@ class _WidgetInputLoginState extends State<WidgetInputLogin>
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 50 + ((Get.width - 60)),
+      width: 50 + ((appContext.width - 60)),
       child: Padding(
         padding: widget.margin ?? EdgeInsets.zero,
         child: Column(

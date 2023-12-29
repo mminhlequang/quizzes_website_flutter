@@ -1,12 +1,12 @@
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:quizzes/src/presentation/widgets/widget_button.dart';
 
 import '../bloc/sign_in_bloc.dart';
 
-SignInBloc get _bloc => Get.find<SignInBloc>();
+SignInBloc get _bloc => findInstance<SignInBloc>();
 
 class WidgetCodeInput extends StatefulWidget {
   const WidgetCodeInput({super.key});

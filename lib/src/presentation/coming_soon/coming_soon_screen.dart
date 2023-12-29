@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import 'package:quizzes/src/utils/utils.dart';
 import 'package:particles_flutter/particles_flutter.dart';
 import 'package:simple_animations/simple_animations.dart';
-import 'package:get/get.dart';
 
 class ComingSoonScreen extends StatefulWidget {
   const ComingSoonScreen({super.key});
@@ -35,8 +34,8 @@ class _ComingSoonScreenState extends State<ComingSoonScreen> {
               awayRadius: 80,
               numberOfParticles: 380,
               speedOfParticles: .25,
-              height: Get.height,
-              width: Get.width,
+              height: appContext.height,
+              width: appContext.width,
               onTapAnimation: true,
               awayAnimationDuration: const Duration(milliseconds: 600),
               maxParticleSize: 6,

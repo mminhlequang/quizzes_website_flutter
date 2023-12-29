@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/firestore_resources/firestore_resources.dart';
 import 'package:quizzes/src/presentation/widgets/widget_button.dart';
 import 'package:quizzes/src/presentation/widgets/widget_check.dart';
@@ -11,7 +12,7 @@ import 'package:quizzes/src/presentation/widgets/widget_textfield.dart';
 
 import '../bloc/languages_bloc.dart';
 
-LanguagesBloc get _bloc => Get.find<LanguagesBloc>();
+LanguagesBloc get _bloc => findInstance<LanguagesBloc>();
 
 class WidgetFormCreateLangs extends StatefulWidget {
   const WidgetFormCreateLangs({super.key});
@@ -42,7 +43,7 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.back();
+        context.pop();
       },
       child: Material(
         color: Colors.black26,
@@ -147,7 +148,7 @@ class _WidgetFormCreateLangsState extends State<WidgetFormCreateLangs> {
                                 : title.text.isNotEmpty && code.text.isNotEmpty,
                             label: 'Submit',
                             onTap: () async {
-                              Get.back();
+                              context.pop();
                               if (isEnableJson) {
                                 List datas =
                                     jsonDecode(json.text.trim()) as List;

@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/firestore_resources/constants.dart';
 import 'package:quizzes/src/firestore_resources/instances.dart';
 import 'package:quizzes/src/presentation/widgets/widget_fab_ani.dart';
@@ -13,7 +13,7 @@ import '../widgets/widget_row_value.dart';
 import 'bloc/languages_bloc.dart';
 import 'widgets/widget_form_create.dart';
 
-LanguagesBloc get _bloc => Get.find<LanguagesBloc>();
+LanguagesBloc get _bloc => findInstance<LanguagesBloc>();
 
 class LanguagesScreen extends StatefulWidget {
   const LanguagesScreen({super.key});

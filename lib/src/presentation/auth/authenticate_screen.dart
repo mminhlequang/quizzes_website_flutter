@@ -1,13 +1,13 @@
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import '../widgets/widgets.dart';
 import 'bloc/sign_in_bloc.dart';
 import 'widgets/widget_code_input.dart';
 import 'widgets/widget_phone_input.dart';
 
-SignInBloc get _bloc => Get.find<SignInBloc>();
+SignInBloc get _bloc => findInstance<SignInBloc>();
 
 class AuthenticateScreen extends StatefulWidget {
   const AuthenticateScreen({

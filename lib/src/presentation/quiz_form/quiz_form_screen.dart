@@ -6,7 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/firestore_resources/firestore_resources.dart';
 import 'package:quizzes/src/presentation/widgets/widget_button.dart';
 import 'package:quizzes/src/presentation/widgets/widget_check.dart';
@@ -16,7 +17,7 @@ import '../quizs/bloc/quizs_bloc.dart';
 import '../widgets/widget_popup_container.dart';
 import 'bloc/quiz_form_bloc.dart';
 
-QuizFormBloc get _bloc => Get.find<QuizFormBloc>();
+QuizFormBloc get _bloc => findInstance<QuizFormBloc>();
 
 class QuizFormScreen extends StatefulWidget {
   const QuizFormScreen({super.key});
@@ -55,7 +56,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.back();
+        context.pop();
       },
       child: Material(
         color: Colors.black26,
@@ -389,7 +390,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                               code.text.isNotEmpty),
                                   label: 'Submit',
                                   onTap: () async {
-                                    Get.back();
+                                    context.pop();
                                     if (isEnableJson) {
                                       List datas =
                                           jsonDecode(json.text.trim()) as List;
@@ -405,7 +406,7 @@ class _QuizFormScreenState extends State<QuizFormScreen> {
                                         kdb_isPublic: isSetPublic,
                                       }, state.subject![kdb_id]);
                                     }
-                                    Get.find<QuizsBloc>()
+                                    findInstance<QuizsBloc>()
                                         .add(const FetchQuizsEvent(page: 1));
                                   },
                                 )

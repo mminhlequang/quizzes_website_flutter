@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/firestore_resources/firestore_resources.dart';
 import 'package:quizzes/src/presentation/quizs/bloc/quizs_bloc.dart';
 import 'package:quizzes/src/presentation/widgets/widget_button.dart';
@@ -12,7 +13,7 @@ import 'package:quizzes/src/presentation/widgets/widget_textfield.dart';
 
 import '../bloc/subjects_bloc.dart';
 
-SubjectsBloc get _bloc => Get.find<SubjectsBloc>();
+SubjectsBloc get _bloc => findInstance<SubjectsBloc>();
 
 class WidgetFormCreateSubjects extends StatefulWidget {
   const WidgetFormCreateSubjects({super.key});
@@ -40,14 +41,14 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
     var id = DateTime.now().millisecondsSinceEpoch;
     data.addAll({kdb_id: id});
     await colSubjects.doc('$id').set(data);
-    Get.find<QuizsBloc>().needRefresh();
+    findInstance<QuizsBloc>().needRefresh();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.back();
+        context.pop();
       },
       child: Material(
         color: Colors.black26,
@@ -152,7 +153,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                                 : title.text.isNotEmpty && code.text.isNotEmpty,
                             label: 'Submit',
                             onTap: () async {
-                              Get.back();
+                              context.pop();
                               if (isEnableJson) {
                                 List datas =
                                     jsonDecode(json.text.trim()) as List;

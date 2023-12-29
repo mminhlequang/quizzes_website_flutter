@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 
 import '../../presentation/auth/authenticate_screen.dart';
 
@@ -13,7 +13,7 @@ part 'auth_state.dart';
 
 enum AuthStateType { none, logged }
 
-String? get loggedUid => Get.find<AuthBloc>().state.user?.uid;
+String? get loggedUid => findInstance<AuthBloc>().state.user?.uid;
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   StreamSubscription? _subscription;
@@ -73,7 +73,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (state.stateType == AuthStateType.logged) {
       // Get.offAllNamed(Routes.nav);
     } else {
-      Get.dialog(const AuthenticateScreen());
+      appDialog(const AuthenticateScreen());
     }
   }
 }

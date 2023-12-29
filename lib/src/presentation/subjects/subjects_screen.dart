@@ -1,11 +1,10 @@
-
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/firestore_resources/constants.dart';
 import 'package:quizzes/src/firestore_resources/instances.dart';
 import 'package:quizzes/src/presentation/widgets/widget_fab_ani.dart';
@@ -17,7 +16,7 @@ import '../widgets/widget_row_value.dart';
 import 'bloc/subjects_bloc.dart';
 import 'widgets/widget_form_create.dart';
 
-SubjectsBloc get _bloc => Get.find<SubjectsBloc>();
+SubjectsBloc get _bloc => findInstance<SubjectsBloc>();
 
 class SubjectsScreen extends StatefulWidget {
   const SubjectsScreen({super.key});
@@ -504,7 +503,8 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                                               .doc('${e.data()[kdb_id]}')
                                               .delete();
                                           _bloc.add(const FetchSubjectsEvent());
-                                          Get.find<QuizsBloc>().needRefresh();
+                                          findInstance<QuizsBloc>()
+                                              .needRefresh();
                                           var queries = await colQuizs
                                               .where(kdb_subjectId,
                                                   isEqualTo: e.data()[kdb_id])

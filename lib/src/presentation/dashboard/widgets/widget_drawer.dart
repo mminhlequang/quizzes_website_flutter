@@ -1,11 +1,12 @@
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzes/src/utils/utils.dart';
 
 import '../bloc/dashboard_bloc.dart';
 
-DashboardBloc get _bloc => Get.find<DashboardBloc>();
+DashboardBloc get _bloc => findInstance<DashboardBloc>();
 
 class WidgetDrawer extends StatefulWidget {
   const WidgetDrawer({super.key});
@@ -19,7 +20,7 @@ class _WidgetDrawerState extends State<WidgetDrawer> {
   Widget build(BuildContext context) {
     return Container(
       width: 280,
-      height: Get.height,
+      height: appContext.height,
       decoration: BoxDecoration(color: appColorBackground),
       alignment: Alignment.topCenter,
       child: BlocBuilder<DashboardBloc, DashboardState>(
@@ -46,7 +47,7 @@ class _WidgetDrawerState extends State<WidgetDrawer> {
                               (e) => InkWell(
                                 onTap: () {
                                   _bloc.add(ChangeMenuDashboardEvent(e));
-                                  Get.back();
+                                  context.pop();
                                 },
                                 child: Ink(
                                   padding: const EdgeInsets.symmetric(

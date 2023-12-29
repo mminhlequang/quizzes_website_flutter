@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/firestore_resources/constants.dart';
 import 'package:quizzes/src/firestore_resources/instances.dart';
 
@@ -11,7 +11,7 @@ import '../widgets/widgets.dart';
 import 'bloc/gallery_bloc.dart';
 import 'widgets/widget_form_create.dart';
 
-GalleryBloc get _bloc => Get.find<GalleryBloc>();
+GalleryBloc get _bloc => findInstance<GalleryBloc>();
 
 class GalleryScreen extends StatefulWidget {
   const GalleryScreen({super.key});

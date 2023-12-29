@@ -1,11 +1,11 @@
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quizzes/src/base/bloc.dart';
-import 'package:quizzes/src/utils/utils.dart';
 
 part 'sign_in_event.dart';
 
@@ -119,8 +119,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   _verificationCompleted() {
-    Get.back();
-    Get.find<AuthBloc>().add(const AuthLoad(
+    appContext.pop();
+    findInstance<AuthBloc>().add(const AuthLoad(
       redirect: true,
     ));
   }

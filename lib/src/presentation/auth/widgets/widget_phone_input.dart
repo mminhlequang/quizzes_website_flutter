@@ -1,13 +1,13 @@
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/presentation/widgets/intl_phone_number_input/src/utils/phone_number.dart';
 import 'package:quizzes/src/presentation/widgets/widget_button.dart';
 
 import '../bloc/sign_in_bloc.dart';
 import 'animate_widgets.dart';
 
-SignInBloc get _bloc => Get.find<SignInBloc>();
+SignInBloc get _bloc => findInstance<SignInBloc>();
 
 class WidgetPhoneInput extends StatefulWidget {
   const WidgetPhoneInput({super.key});

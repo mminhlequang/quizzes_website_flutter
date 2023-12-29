@@ -1,7 +1,7 @@
 import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/base/bloc.dart';
 import 'package:quizzes/src/presentation/languages/languages_screen.dart';
 import 'package:quizzes/src/presentation/quizs/quizs_screen.dart';
@@ -11,7 +11,7 @@ import '../subjects/subjects_screen.dart';
 import 'bloc/dashboard_bloc.dart';
 import 'widgets/widget_drawer.dart';
 
-DashboardBloc get _bloc => Get.find<DashboardBloc>();
+DashboardBloc get _bloc => findInstance<DashboardBloc>();
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -27,10 +27,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
     super.initState();
-    Get.find<AuthBloc>().add(const AuthLoad());
+    findInstance<AuthBloc>().add(const AuthLoad());
     _bloc.add(InitDashboardEvent());
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (Get.find<AuthBloc>().state.stateType == AuthStateType.logged) {
+      if (findInstance<AuthBloc>().state.stateType == AuthStateType.logged) {
         _bloc.add(InitDashboardEvent());
       }
     });
@@ -42,7 +42,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       key: scaffoldKey,
       drawer: const WidgetDrawer(),
       body: BlocConsumer<AuthBloc, AuthState>(
-        bloc: Get.find<AuthBloc>(),
+        bloc: findInstance<AuthBloc>(),
         listener: (_, state) {
           if (state.stateType == AuthStateType.logged) {
             _bloc.add(InitDashboardEvent());

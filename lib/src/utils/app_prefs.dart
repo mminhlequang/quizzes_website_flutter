@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'utils.dart';
+
 class AppPrefs extends AppPrefsBase {
   AppPrefs._();
 
@@ -15,7 +17,7 @@ class AppPrefs extends AppPrefsBase {
   late Box _box;
   bool _initialized = false;
 
-  initListener() async {
+  Future initialize() async {
     if (_initialized) return;
     if (!kIsWeb) {
       Directory appDocDirectory = await getApplicationDocumentsDirectory();
@@ -36,11 +38,17 @@ class AppPrefs extends AppPrefsBase {
 
   String? get themeModel => _box.get('themeModel');
 
+  bool get isLanguageCodeEmpty =>
+      _box.get('languageCode') == null ||
+      !appSupportedLocales
+          .any((e) => e.languageCode == _box.get('languageCode'));
+
   @override
   set languageCode(String? value) => _box.put('languageCode', value);
 
   @override
-  String get languageCode => _box.get('languageCode') ?? 'en';
+  String get languageCode =>
+      _box.get('languageCode') ?? appSupportedLocales.first.languageCode;
 
   @override
   set dateFormat(String value) => _box.put('dateFormat', value);

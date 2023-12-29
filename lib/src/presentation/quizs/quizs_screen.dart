@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
+import 'package:quizzes/src/utils/utils.dart';
 import 'package:quizzes/src/firestore_resources/firestore_resources.dart';
 import 'package:quizzes/src/presentation/widgets/widget_fab_ani.dart';
 
@@ -16,7 +16,7 @@ import '../widgets/widget_row_value.dart';
 import 'bloc/quizs_bloc.dart';
 import '../quiz_form/quiz_form_screen.dart';
 
-QuizsBloc get _bloc => Get.find<QuizsBloc>();
+QuizsBloc get _bloc => findInstance<QuizsBloc>();
 
 class QuizsScreen extends StatefulWidget {
   const QuizsScreen({super.key});
