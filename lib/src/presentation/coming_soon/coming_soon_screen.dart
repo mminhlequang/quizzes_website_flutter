@@ -1,5 +1,6 @@
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:quizzes/src/utils/utils.dart';
 import 'package:particles_flutter/particles_flutter.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -77,7 +78,7 @@ class _ComingSoonScreenState extends State<ComingSoonScreen> {
                               ),
                             ),
                           ),
-                          kSpacingWidth16,
+                          Gap(16),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -86,7 +87,7 @@ class _ComingSoonScreenState extends State<ComingSoonScreen> {
                                 style: w700TextStyle(
                                     color: Colors.white, fontSize: 24),
                               ),
-                              kSpacingHeight4,
+                              Gap(4),
                               Text(
                                 'Engineering Your Ideas to Life ',
                                 style: w400TextStyle(

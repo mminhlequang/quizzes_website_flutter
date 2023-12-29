@@ -8,11 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart' as bloc;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart' as getx;
 import 'package:get/get.dart';
-import 'package:overlay_support/overlay_support.dart';
+import 'package:quizzes/_iwu_pack.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:flutter_portal/flutter_portal.dart';
  
-import '_imagineeringwithus_pack.dart';
 import 'src/base/bloc.dart';
 import 'src/translations/app_translations.dart';
 import 'src/constants/constants.dart';
@@ -32,10 +31,10 @@ void main() async {
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   await SystemChrome.setPreferredOrientations(DeviceOrientation.values);
   await AppPrefs.instance.initListener();
-  imagineeringwithusPackSetup();
+  iwuSetup();
   _initialBlocs();
   bloc.Bloc.observer = AppBlocObserver();
-  runApp(const OverlaySupport(child: App()));
+  runApp(const   App() );
 }
 
 void _initialBlocs() {

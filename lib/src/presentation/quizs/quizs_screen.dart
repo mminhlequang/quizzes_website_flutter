@@ -1,10 +1,11 @@
 import 'dart:math';
 
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:quizzes/src/firestore_resources/firestore_resources.dart';
 import 'package:quizzes/src/presentation/widgets/widget_fab_ani.dart';
@@ -82,7 +83,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                     const Spacer(),
                   ],
                 ),
-                kSpacingHeight32,
+                Gap(32),
                 Row(
                   children: [
                     SizedBox(
@@ -175,7 +176,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                     style: w300TextStyle(
                                         fontSize: 14,
                                         color: hexColor('#68686A'))),
-                                kSpacingWidth4,
+                                Gap(4),
                                 Text(
                                   '${state.language![kdb_languageName]}',
                                   style: w500TextStyle(),
@@ -184,7 +185,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             ],
                           ),
                         ),
-                        kSpacingWidth24,
+                        Gap(24),
                         InkWell(
                           onTap: () {
                             _bloc.add(ChangeFilterQuizsEvent(
@@ -196,7 +197,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                   style: w300TextStyle(
                                       fontSize: 14,
                                       color: hexColor('#68686A'))),
-                              kSpacingWidth4,
+                              Gap(4),
                               CircleAvatar(
                                 backgroundColor: state.isForKid
                                     ? appColorPrimary
@@ -215,7 +216,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             ],
                           ),
                         ),
-                        kSpacingWidth24,
+                        Gap(24),
                         WidgetOverlayActions(
                           gestureType: state.itemsSubjects != null
                               ? GestureType.onTap
@@ -259,7 +260,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                                       ? Colors.grey[100]
                                                       : Colors.transparent,
                                                   padding: const EdgeInsets
-                                                          .symmetric(
+                                                      .symmetric(
                                                       vertical: 8,
                                                       horizontal: 16),
                                                   child: Align(
@@ -288,7 +289,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                     style: w300TextStyle(
                                         fontSize: 14,
                                         color: hexColor('#68686A'))),
-                                kSpacingWidth4,
+                                Gap(4),
                                 Text(
                                   '${state.subject![kdb_label]} '
                                   "(${state.countWithFilter})",
@@ -298,7 +299,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             ],
                           ),
                         ),
-                        kSpacingWidth24,
+                        Gap(24),
                         InkWell(
                           onTap: () {
                             _bloc.add(ChangeFilterQuizsEvent(
@@ -310,7 +311,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                   style: w300TextStyle(
                                       fontSize: 14,
                                       color: hexColor('#68686A'))),
-                              kSpacingWidth4,
+                              Gap(4),
                               CircleAvatar(
                                 backgroundColor: state.isPublic
                                     ? appColorPrimary
@@ -331,12 +332,12 @@ class _QuizsScreenState extends State<QuizsScreen> {
                         ),
                       ],
                     ),
-                    kSpacingWidth32,
+                    Gap(32),
                     Text(
                       'Page:',
                       style: w400TextStyle(),
                     ),
-                    kSpacingWidth4,
+                    Gap(4),
                     IconButton(
                       onPressed: state.page == 1
                           ? null
@@ -365,7 +366,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             : appColorText,
                       ),
                     ),
-                    kSpacingWidth12,
+                    Gap(12),
                     WidgetOverlayActions(
                       builder: (Widget child,
                           Size size,
@@ -420,7 +421,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                             'Limit:',
                             style: w400TextStyle(),
                           ),
-                          kSpacingWidth4,
+                          Gap(4),
                           Text(
                             '${state.limit} items',
                             style: w500TextStyle(),
@@ -430,7 +431,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                     ),
                   ],
                 ),
-                kSpacingHeight32,
+                Gap(32),
                 Expanded(
                   child: Column(
                     children: [
@@ -446,7 +447,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                           ],
                         ),
                       ),
-                      kSpacingHeight20,
+                      Gap(20),
                       Expanded(
                         child: ValueListenableBuilder(
                             valueListenable: searchController,
@@ -509,7 +510,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                                   .map<Widget>((e) => Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                    .symmetric(
+                                                                .symmetric(
                                                                 vertical: 2),
                                                         child: Row(
                                                           mainAxisSize:
@@ -523,7 +524,7 @@ class _QuizsScreenState extends State<QuizsScreen> {
                                                               style:
                                                                   w300TextStyle(),
                                                             ),
-                                                            kSpacingWidth4,
+                                                            Gap(4),
                                                             if (e[kdb_isCorrect] ==
                                                                     true ||
                                                                 e[kdb_isCorrect] ==

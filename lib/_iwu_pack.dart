@@ -1,16 +1,22 @@
-import 'package:_imagineeringwithus_pack/setup/app_base.dart';
-import 'package:_imagineeringwithus_pack/setup/app_setup.dart';
+import 'package:_iwu_pack/setup/app_base.dart';
+import 'package:_iwu_pack/setup/app_setup.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'src/constants/constants.dart';
 import 'src/utils/utils.dart';
 
-imagineeringwithusPackSetup() {
+iwuSetup() {
   AppSetup.initialized(
     value: AppSetup(
       env: AppEnv.preprod,
       appColors: AppColors.instance,
       appPrefs: AppPrefs.instance,
+      appTextStyleWrap: AppTextStyleWrap(
+        fontWrap: (textStyle) {
+          return GoogleFonts.urbanist(textStyle: textStyle);
+        },
+      ),
     ),
   );
 }

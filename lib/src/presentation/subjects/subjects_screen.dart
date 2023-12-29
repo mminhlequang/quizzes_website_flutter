@@ -1,11 +1,12 @@
 import 'dart:math';
 
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:quizzes/src/firestore_resources/constants.dart';
 import 'package:quizzes/src/firestore_resources/instances.dart';
@@ -85,7 +86,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                   const Spacer(),
                 ],
               ),
-              kSpacingHeight32,
+              Gap(32),
               Row(
                 children: [
                   SizedBox(
@@ -177,7 +178,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                                   style: w300TextStyle(
                                       fontSize: 14,
                                       color: hexColor('#68686A'))),
-                              kSpacingWidth4,
+                              Gap(4),
                               Text(
                                 '${state.language![kdb_languageName]} '
                                 "(${state.countWithFilter})",
@@ -187,7 +188,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                           ],
                         ),
                       ),
-                      kSpacingWidth24,
+                      Gap(24),
                       InkWell(
                         onTap: () {
                           _bloc.add(ChangeFilterSubjectsEvent(
@@ -198,7 +199,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                             Text('isForKid:',
                                 style: w300TextStyle(
                                     fontSize: 14, color: hexColor('#68686A'))),
-                            kSpacingWidth4,
+                            Gap(4),
                             CircleAvatar(
                               backgroundColor: state.isForKid
                                   ? appColorPrimary
@@ -217,7 +218,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                           ],
                         ),
                       ),
-                      kSpacingWidth24,
+                      Gap(24),
                       InkWell(
                         onTap: () {
                           _bloc.add(ChangeFilterSubjectsEvent(
@@ -228,7 +229,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                             Text('isPublic:',
                                 style: w300TextStyle(
                                     fontSize: 14, color: hexColor('#68686A'))),
-                            kSpacingWidth4,
+                            Gap(4),
                             CircleAvatar(
                               backgroundColor: state.isPublic
                                   ? appColorPrimary
@@ -249,12 +250,12 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                       ),
                     ],
                   ),
-                  kSpacingWidth32,
+                  Gap(32),
                   Text(
                     'Page:',
                     style: w400TextStyle(),
                   ),
-                  kSpacingWidth4,
+                  Gap(4),
                   IconButton(
                     onPressed: state.page == 1
                         ? null
@@ -283,7 +284,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                           : appColorText,
                     ),
                   ),
-                  kSpacingWidth12,
+                  Gap(12),
                   WidgetOverlayActions(
                     builder: (Widget child,
                         Size size,
@@ -338,7 +339,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                           'Limit:',
                           style: w400TextStyle(),
                         ),
-                        kSpacingWidth4,
+                        Gap(4),
                         Text(
                           '${state.limit} items',
                           style: w500TextStyle(),
@@ -348,7 +349,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                   ),
                 ],
               ),
-              kSpacingHeight32,
+              Gap(32),
               Expanded(
                 child: Column(
                   children: [
@@ -368,7 +369,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                         ],
                       ),
                     ),
-                    kSpacingHeight20,
+                    Gap(20),
                     Expanded(
                       child: ValueListenableBuilder(
                         valueListenable: searchController,
@@ -493,7 +494,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                                       callback: (value) async {
                                         await colSubjects
                                             .doc('${e.data()[kdb_id]}')
-                       .update({kdb_isPublic: value});
+                                            .update({kdb_isPublic: value});
                                         _bloc.add(const FetchSubjectsEvent());
                                       },
                                     ),

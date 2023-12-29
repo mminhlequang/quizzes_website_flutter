@@ -1,6 +1,7 @@
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class WidgetCheck extends StatelessWidget {
   final bool status;
@@ -32,7 +33,7 @@ class WidgetCheck extends StatelessWidget {
                   )
                 : const SizedBox(),
           ),
-          kSpacingWidth8,
+          Gap(8),
           Text(
             label,
             style: w400TextStyle(),

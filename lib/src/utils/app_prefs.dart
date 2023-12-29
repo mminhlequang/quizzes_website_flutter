@@ -1,10 +1,9 @@
 import 'dart:io';
- 
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AppPrefs extends AppPrefsBase {
   AppPrefs._();
@@ -14,20 +13,15 @@ class AppPrefs extends AppPrefsBase {
   static AppPrefs get instance => _instance;
 
   late Box _box;
-  late final FlutterSecureStorage _secureStorage;
   bool _initialized = false;
 
   initListener() async {
     if (_initialized) return;
     if (!kIsWeb) {
       Directory appDocDirectory = await getApplicationDocumentsDirectory();
-      Hive..init(appDocDirectory.path);
+      Hive.init(appDocDirectory.path);
     }
     _box = await Hive.openBox('AppPref');
-    _securityAccount ??=
-        'flutter_secure_storage_service_${DateTime.now().millisecondsSinceEpoch}';
-    _secureStorage = FlutterSecureStorage(
-        iOptions: IOSOptions(accountName: _securityAccount!));
     _initialized = true;
   }
 
@@ -37,10 +31,6 @@ class AppPrefs extends AppPrefsBase {
     _box.delete('accessToken');
     _box.delete('themeModel');
   }
-
-  set _securityAccount(String? value) => _box.put('_securityAccount', value);
-
-  String? get _securityAccount => _box.get('_securityAccount');
 
   set themeModel(String? value) => _box.put('themeModel', value);
 

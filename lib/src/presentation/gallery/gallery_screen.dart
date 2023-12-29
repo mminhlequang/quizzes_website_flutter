@@ -1,7 +1,8 @@
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:quizzes/src/firestore_resources/constants.dart';
 import 'package:quizzes/src/firestore_resources/instances.dart';
@@ -80,7 +81,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                     const Spacer(),
                   ],
                 ),
-                kSpacingHeight32,
+                Gap(32),
                 Row(
                   children: [
                     SizedBox(
@@ -108,7 +109,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                       'Page:',
                       style: w400TextStyle(),
                     ),
-                    kSpacingWidth4,
+                    Gap(4),
                     IconButton(
                       onPressed: state.page == 1
                           ? null
@@ -139,7 +140,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                             : appColorText,
                       ),
                     ),
-                    kSpacingWidth12,
+                    Gap(12),
                     WidgetOverlayActions(
                       builder: (Widget child,
                           Size size,
@@ -194,7 +195,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                             'Limit:',
                             style: w400TextStyle(),
                           ),
-                          kSpacingWidth4,
+                          Gap(4),
                           Text(
                             '${state.limit} items',
                             style: w500TextStyle(),
@@ -204,7 +205,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                     ),
                   ],
                 ),
-                kSpacingHeight32,
+                Gap(32),
                 Expanded(
                   child: Column(
                     children: [
@@ -221,7 +222,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                           ],
                         ),
                       ),
-                      kSpacingHeight20,
+                      Gap(20),
                       Expanded(
                         child: ValueListenableBuilder(
                             valueListenable: searchController,

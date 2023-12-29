@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
-import 'package:_imagineeringwithus_pack/_imagineeringwithus_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:quizzes/src/firestore_resources/firestore_resources.dart';
 import 'package:quizzes/src/presentation/quizs/bloc/quizs_bloc.dart';
@@ -76,7 +77,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                             "Subjects",
                             style: w600TextStyle(fontSize: 28),
                           ),
-                          kSpacingHeight8,
+                          Gap(8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -99,7 +100,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                                   )),
                             ],
                           ),
-                          kSpacingHeight24,
+                          Gap(24),
                           if (isEnableJson) ...[
                             WidgetTextField(
                               controller: json,
@@ -121,7 +122,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                                         setState(() {});
                                       },
                                     )),
-                                kSpacingWidth16,
+                                Gap(16),
                                 Expanded(
                                   flex: 1,
                                   child: WidgetTextField(
@@ -134,7 +135,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                                 ),
                               ],
                             ),
-                            kSpacingHeight16,
+                            Gap(16),
                             WidgetCheck(
                               status: isSetPublic,
                               label: 'Set to public',
@@ -145,7 +146,7 @@ class _WidgetFormCreateSubjectsState extends State<WidgetFormCreateSubjects> {
                               },
                             )
                           ],
-                          kSpacingHeight24,
+                          Gap(24),
                           WidgetButton(
                             enable: isEnableJson
                                 ? isJson
