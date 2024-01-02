@@ -49,10 +49,10 @@
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
-        entrypointUrl: window.location.origin + "/main.dart.js?v=1.0.5",
+        entrypointUrl: window.location.origin + "/quizzes_website_flutter/main.dart.js?v=" + serviceWorkerVersion,
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
-          serviceWorkerUrl: window.location.origin + "/flutter_service_worker.js?v=",
+          serviceWorkerUrl: window.location.origin + "/quizzes_website_flutter/flutter_service_worker.js?v=",
         },
       }).then(function(engineInitializer) {
         return engineInitializer.initializeEngine();
