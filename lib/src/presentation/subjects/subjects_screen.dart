@@ -547,7 +547,7 @@ class __NumberOfSubjectsState extends State<_NumberOfSubjects> {
   _getCount() async {
     AggregateQuerySnapshot query =
         await colQuizs.where(kdb_subjectId, isEqualTo: widget.id).count().get();
-    count = query.count;
+    count = query.count ?? 0;
     setState(() {});
   }
 
